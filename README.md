@@ -281,9 +281,9 @@ Please use the [GitHub Issues](https://github.com/yourusername/TaskSystem/issues
 
 ## 📧 Contact
 
-- **Author**: [Your Name]
-- **Email**: [your.email@example.com]
-- **Project Link**: [https://github.com/yourusername/TaskSystem](https://github.com/yourusername/TaskSystem)
+- **Author**: [WGT]
+- **Email**: [wengzu728.love@gmail.com]
+- **Project Link**: [https://github.com/yourusername/TaskSystem](https://github.com/Which-W/TaskSystem)
 
 ## 🙏 Acknowledgments
 
