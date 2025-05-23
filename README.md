@@ -283,7 +283,7 @@ Please use the [GitHub Issues](https://github.com/yourusername/TaskSystem/issues
 
 - **Author**: [WGT]
 - **Email**: [wengzu728.love@gmail.com]
-- **Project Link**: [https://github.com/yourusername/TaskSystem](https://github.com/Which-W/TaskSystem)
+- **Project Link**: [https://github.com/Which-W/TaskSystem](https://github.com/Which-W/TaskSystem)
 
 ## 🙏 Acknowledgments
 
