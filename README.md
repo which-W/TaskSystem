@@ -1,42 +1,296 @@
 # TaskSystem
 
-## 一、项目概述
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![C++](https://img.shields.io/badge/C++-17-blue.svg)](https://isocpp.org/std/the-standard)
+[![CMake](https://img.shields.io/badge/CMake-3.12+-green.svg)](https://cmake.org/)
 
-这是一个简单的任务处理系统，可作为任务处理的基础。它具备多种功能，能够满足基本的任务管理需求。
+A lightweight, efficient task management system built with modern C++ featuring persistent storage, multi-threading support, and flexible command architecture.
 
-## 二、已完成功能
+## 🚀 Features
 
-### 1. 任务持久化保存
+- **Persistent Task Storage**: Uses nlohmann/json for reliable task data persistence
+- **Terminal-Based Interface**: Interactive command-line interface for task management
+- **CRTP-Based Architecture**: Modern C++ design with Curiously Recurring Template Pattern
+- **Multi-threaded Logging**: Concurrent logging system with multi-consumer support
+- **Flexible Command System**: Extensible command architecture using type erasure
+- **Cross-platform Support**: Compatible with Windows, Linux, and macOS
 
-通过 nlomann 的 json 库实现将用户输入的任务长久保存到文件中。当用户输入任务后，系统会将任务信息以 JSON 格式存储在文件里，确保任务数据不会丢失，方便后续查看和管理。
+## 📋 Table of Contents
 
-### 2. 终端任务输入与多态实现
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+- [Building from Source](#building-from-source)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-用户可以通过字符串在终端输入任务。系统采用 CRTP（奇异递归模板模式）的多态方法来处理这些任务。在终端运行命令时，例如输入 `add task,1,2025 - 2 - 2` 等，系统会根据不同的命令执行相应的操作。更多命令可以在编译运行后查看具体的使用语句。
+## 🛠️ Installation
 
-### 3. 函数绑定机制
+### Prerequisites
 
-使用 Wrapper 包裹，让 Command 可以通过 CRTP 的方式绑定相关 TaskManager 函数。这种设计使得系统的命令处理更加灵活和可扩展，不同的命令可以方便地与对应的处理函数进行关联。
+- C++17 compatible compiler (GCC 7+, Clang 5+, MSVC 2017+)
+- CMake 3.12 or higher
+- nlohmann/json library
 
-### 4. 日志多消费者与并发处理
+### Quick Start
 
-实现了日志的多消费者机制，支持多线程并发处理日志。多个线程可以同时对日志进行处理，提高了日志处理的效率，确保系统在高并发情况下也能稳定运行。
+1. **Clone the repository**
 
-## 三、使用方法
+   ```bash
+   git clone https://github.com/yourusername/TaskSystem.git
+   cd TaskSystem
+   ```
 
-### 1. 编译项目
+2. **Install dependencies**
 
-项目使用 CMake 进行构建，你可以按照以下步骤进行编译：
+   Make sure nlohmann/json is available in your system. You can install it via:
 
-1. 创建一个构建目录：`mkdir build && cd build`
-2. 运行 CMake 生成构建文件：`cmake..`
-3. 编译项目：`cmake --build.`
+   **Ubuntu/Debian:**
 
-### 2. 运行项目
+   ```bash
+   sudo apt-get install nlohmann-json3-dev
+   ```
 
-编译完成后，在终端中运行生成的可执行文件。运行后，你可以根据提示输入相应的命令来管理任务。例如，使用 `add task` 命令添加新任务，具体的命令格式可以在运行程序后查看详细说明。
+   **macOS (via Homebrew):**
 
-## 四、注意事项
+   ```bash
+   brew install nlohmann-json
+   ```
 
-- 在使用过程中，请确保 nlomann 的 json 库已正确安装，否则可能会导致任务保存功能无法正常使用。
-- 输入命令时，请严格按照规定的格式输入，否则系统可能无法正确识别命令。
+   **Windows (via vcpkg):**
+
+   ```bash
+   vcpkg install nlohmann-json
+   ```
+
+3. **Build the project**
+
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   cmake --build .
+   ```
+
+4. **Run the application**
+
+   ```bash
+   ./TaskSystem        # Linux/macOS
+   TaskSystem.exe      # Windows
+   ```
+
+## 📖 Usage
+
+After launching TaskSystem, you'll see an interactive prompt where you can enter commands to manage your tasks.
+
+```
+欢迎使用任务管理系统！
+可用命令: add, delete, list, update, exit, upgrate_index
+
+> add Buy groceries,1,2025-05-24
+Task added successfully!
+
+> list
+[1] Buy groceries (Priority: 1, Due: 2025-05-24)
+
+> exit
+退出任务管理系统。
+```
+
+## 🔧 Commands
+
+### `add` - Add New Task
+
+**Syntax:** `add <task_name>,<priority>,<due_date>`
+
+**Example:**
+
+```bash
+> add Complete project documentation,2,2025-05-30
+> add Buy milk,1,2025-05-24
+```
+
+### `delete` - Delete Task
+
+**Syntax:** `delete <task_id>`
+
+**Example:**
+
+```bash
+> delete 1
+```
+
+### `list` - List All Tasks
+
+**Syntax:** `list`
+
+**Example:**
+
+```bash
+> list
+[1] Complete project documentation (Priority: 2, Due: 2025-05-30)
+[2] Buy milk (Priority: 1, Due: 2025-05-24)
+```
+
+### `update` - Update Task
+
+**Syntax:** `update <task_id>,<new_task_name>,<new_priority>,<new_due_date>`
+
+**Example:**
+
+```bash
+> update 1,Complete final documentation,3,2025-06-01
+```
+
+### `upgrate_index` - Update Task Index
+
+**Syntax:** `upgrate_index <old_index>,<new_index>`
+
+**Example:**
+
+```bash
+> upgrate_index 1,2
+```
+
+### `exit` - Exit Application
+
+**Syntax:** `exit`
+
+Safely closes the application and saves all changes.
+
+## 🏗️ Building from Source
+
+### Using CMake (Recommended)
+
+```bash
+# Create build directory
+mkdir build && cd build
+
+# Configure the project
+cmake ..
+
+# Build the project
+cmake --build .
+
+# Optional: Install the project
+cmake --install .
+```
+
+### Using CMake Presets (Windows)
+
+For Windows users, the project includes CMake presets:
+
+```bash
+# Configure for x64 Debug
+cmake --preset x64-debug
+
+# Build
+cmake --build out/build/x64-debug
+```
+
+Available presets:
+
+- `x64-debug` - 64-bit Debug build
+- `x64-release` - 64-bit Release build
+- `x86-debug` - 32-bit Debug build
+- `x86-release` - 32-bit Release build
+
+## 📁 Project Structure
+
+```
+TaskSystem/
+├── CMakeLists.txt          # Main CMake configuration
+├── CMakePresets.json       # CMake presets for different platforms
+├── LICENSE                 # Apache 2.0 License
+├── README.md              # This file
+├── .gitignore             # Git ignore rules
+├── includes/              # External dependencies headers
+│   └── nlohmann/          # JSON library headers
+└── TaskSystem/            # Source code directory
+    ├── CMakeLists.txt     # Source CMake configuration
+    ├── TaskSystem.cpp     # Main application entry point
+    ├── TaskSystem.h       # Main header file
+    ├── TaskManager.h      # Task management logic
+    ├── Command.h          # Command pattern implementation
+    ├── CommandWrapper.h   # Type erasure wrapper for commands
+    ├── Logger.h           # Logging system
+    ├── LogQueue.h         # Thread-safe log queue
+    └── global.h           # Global includes and definitions
+```
+
+## 🏛️ Architecture
+
+### Design Patterns Used
+
+- **CRTP (Curiously Recurring Template Pattern)**: For compile-time polymorphism in command handling
+- **Command Pattern**: Encapsulates task operations as objects
+- **Type Erasure**: `CommandWrapper` allows storing different command types in containers
+- **Producer-Consumer**: Multi-threaded logging system with queue-based architecture
+
+### Key Components
+
+- **TaskManager**: Core task management functionality
+- **Command System**: Flexible command processing with CRTP
+- **Logger**: Thread-safe logging with multiple consumers
+- **JSON Persistence**: Reliable task data storage
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these guidelines:
+
+1. **Fork the repository**
+
+2. **Create a feature branch**
+
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+
+3. **Make your changes**
+
+4. **Add tests** (if applicable)
+
+5. **Commit your changes**
+
+   ```bash
+   git commit -m "Add amazing feature"
+   ```
+
+6. **Push to the branch**
+
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+
+7. **Open a Pull Request**
+
+### Code Style
+
+- Follow C++17 standards
+- Use consistent indentation (4 spaces)
+- Include appropriate comments for complex logic
+- Ensure thread-safety where applicable
+
+## 📝 License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+## 🐛 Bug Reports & Feature Requests
+
+Please use the [GitHub Issues](https://github.com/yourusername/TaskSystem/issues) page to report bugs or request features.
+
+## 📧 Contact
+
+- **Author**: [Your Name]
+- **Email**: [your.email@example.com]
+- **Project Link**: [https://github.com/yourusername/TaskSystem](https://github.com/yourusername/TaskSystem)
+
+## 🙏 Acknowledgments
+
+- [nlohmann/json](https://github.com/nlohmann/json) - JSON library for modern C++
+- CMake community for build system support
+- C++ community for design pattern guidance
+
+---
+
+⭐ **Star this repository if you find it helpful!**
