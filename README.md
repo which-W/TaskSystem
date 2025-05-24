@@ -17,13 +17,13 @@ A lightweight, efficient task management system built with modern C++ featuring 
 
 ## 📋 Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Commands](#commands)
-- [Building from Source](#building-from-source)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Installation](#%EF%B8%8F-installation)
+- [Usage](#-usage)
+- [Commands](#-commands)
+- [Building from Source](#%EF%B8%8F-building-from-source)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 🛠️ Installation
 
@@ -38,7 +38,7 @@ A lightweight, efficient task management system built with modern C++ featuring 
 1. **Clone the repository**
 
    ```bash
-   git clone git@github.com:which-W/TaskSystem.git
+   git clone https://github.com/which-W/TaskSystem.git
    cd TaskSystem
    ```
 
@@ -128,8 +128,7 @@ Task added successfully!
 
 ```bash
 > list
-[1] Complete project documentation (Priority: 2, Due: 2025-05-30)
-[2] Buy milk (Priority: 1, Due: 2025-05-24)
+ID: 1, Description: task2, Priority: 2, Due Date: 2025-1-1
 ```
 
 ### `update` - Update Task
@@ -144,12 +143,12 @@ Task added successfully!
 
 ### `upgrate_index` - Update Task Index
 
-**Syntax:** `upgrate_index <old_index>,<new_index>`
+**Syntax:** `upgrate_index`
 
 **Example:**
 
 ```bash
-> upgrate_index 1,2
+> upgrate_index 
 ```
 
 ### `exit` - Exit Application
@@ -243,7 +242,7 @@ We welcome contributions! Please follow these guidelines:
 2. **Create a feature branch**
 
    ```bash
-   git checkout -b feature/amazing-feature
+   git checkout -b TaskSystem/test
    ```
 
 3. **Make your changes**
@@ -253,13 +252,13 @@ We welcome contributions! Please follow these guidelines:
 5. **Commit your changes**
 
    ```bash
-   git commit -m "Add amazing feature"
+   git commit -m "how do you to modify"
    ```
 
 6. **Push to the branch**
 
    ```bash
-   git push origin feature/amazing-feature
+   git push origin TaskSystem/test
    ```
 
 7. **Open a Pull Request**
@@ -281,7 +280,7 @@ Please use the [GitHub Issues](https://github.com/yourusername/TaskSystem/issues
 
 ## 📧 Contact
 
-- **Author**: [WGT]
+- **Author**: WGT
 - **Email**: [wengzu728.love@gmail.com]
 - **Project Link**: [https://github.com/Which-W/TaskSystem](https://github.com/Which-W/TaskSystem)
 
