@@ -88,7 +88,7 @@ After launching TaskSystem, you'll see an interactive prompt where you can enter
 
 ```
 欢迎使用任务管理系统！
-可用命令: add, delete, list, update, exit, upgrate_index, help, slowner 
+可用命令: add, delete, list, update, exit, upgrate_index, help, list_owner, get_owner, set_owner 
 
 > help
 "add <描述>,<所有者>,<优先级>,<截止日期> - 添加任务" 
@@ -163,7 +163,7 @@ ID: 1, 描述: task, 所有者: wgt, 优先级: 2, 截止日期: 2025-1-1
 > update 1,Complete final documentation,wgt2,3,2025-06-01
 ```
 
-### `set_owner` - Assign Task Owner(Develop)
+### `set_owner` - Assign Task Owner
 
 **Syntax:** `set_owner <task_id>,<owner_name>`
 
@@ -176,7 +176,7 @@ ID: 1, 描述: task, 所有者: wgt, 优先级: 2, 截止日期: 2025-1-1
 > set_owner 2,Bob Johnson
 ```
 
-### `get_owner` - Get Task Owner(Develop)
+### `get_owner` - Get Task Owner
 
 **Syntax:** `get_owner <task_id>`
 
