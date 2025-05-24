@@ -17,13 +17,13 @@ A lightweight, efficient task management system built with modern C++ featuring 
 
 ## 📋 Table of Contents
 
-- [Installation](#-installation)
-- [Usage](#usage)
-- [Commands](#commands)
-- [Building from Source](#building-from-source)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Installation](#%EF%B8%8F-installation)
+- [Usage](#-usage)
+- [Commands](#-commands)
+- [Building from Source](#%EF%B8%8F-building-from-source)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 🛠️ Installation
 
