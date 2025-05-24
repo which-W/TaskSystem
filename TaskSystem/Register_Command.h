@@ -12,8 +12,10 @@ void initCommandMap(TaskManager& taskManager) {
 	commandMap.emplace("list", ListCommand(taskManager));
 	commandMap.emplace("update", UpdateCommand(taskManager));
 	commandMap.emplace("upgrate_index", Update_IndexCommand(taskManager));
-	commandMap.emplace("slowner", SelectByOwnerCommand(taskManager));
+	commandMap.emplace("list_owner", SelectByOwnerCommand(taskManager));
 	commandMap.emplace("help", HelpCommand(taskManager));
+	commandMap.emplace("get_owner", GetTaskOwnerCommand(taskManager));
+	commandMap.emplace("set_owner", ModifyTaskOwnerCommand(taskManager));
 };
 
 std::unordered_map<std::string, CommandWrapper> &getCommandMap() {

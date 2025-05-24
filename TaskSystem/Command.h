@@ -81,3 +81,19 @@ public:
 private:
     TaskManager& taskManager;
 };
+
+class GetTaskOwnerCommand : public Command<GetTaskOwnerCommand> {
+public:
+    GetTaskOwnerCommand(TaskManager& manager):taskManager(manager) {}
+    void executeImpl(const std::string& args);
+private:
+    TaskManager& taskManager;
+};
+
+class ModifyTaskOwnerCommand : public Command<ModifyTaskOwnerCommand> {
+public:
+    ModifyTaskOwnerCommand(TaskManager& manager) : taskManager(manager) {}
+    void executeImpl(const std::string& args);
+private:
+    TaskManager& taskManager;
+};

@@ -3,7 +3,7 @@
 
 void runCommandLoop(std::unordered_map<std::string, CommandWrapper>& commandMap) {
     std::cout << "欢迎使用任务管理系统！" << std::endl;
-    std::cout << "可用命令: add, delete, list, update, exit, upgrate_index slwner 进行数据处理" << std::endl;
+    std::cout << "可用命令: add, delete, list, update, exit, upgrate_index set_owner list_owner get_owner 进行数据处理" << std::endl;
     std::cout << "输入 'help add 或者 help' 查看命令具体使用方法。" << std::endl;
     std::string input;
 

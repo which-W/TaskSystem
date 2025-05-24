@@ -15,6 +15,8 @@ public:
     void saveTasks() const;
     void upgrate_index();
 	void selectByOwner(const std::string& owner) const; // 根据所有者筛选任务
+    void getTaskOwner(int id);
+	void modifyTaskOwner(int id, const std::string& newOwner);
     ~TaskManager();
 
 private:

@@ -189,6 +189,36 @@ void TaskManager::selectByOwner(const std::string& owner) const
 
 }
 
+void TaskManager::getTaskOwner(int id)
+{
+	auto it = std::find_if(tasks.begin(), tasks.end(), [id](const Task& task) {
+		return task.id == id;
+		});
+	if (it != tasks.end()) {
+		std::cout << "任务所有者: " << it->owner << std::endl;
+	}
+	else {
+		std::cout << "未找到ID为 " << id << " 的任务。" << std::endl;
+	}
+
+}
+
+void TaskManager::modifyTaskOwner(int id, const std::string& newOwner)
+{
+	auto it = std::find_if(tasks.begin(), tasks.end(), [id](const Task& task) {
+		return task.id == id;
+		});
+	if (it != tasks.end()) {
+		it->owner = newOwner;
+		Logger::GetInstance().log(LogLevel::INFO, "修改任务所有者成功: " + it->toString());
+		saveTasks();
+		std::cout << "任务所有者已修改为: " << newOwner << std::endl;
+	}
+	else {
+		std::cout << "未找到ID为 " << id << " 的任务。" << std::endl;
+	}
+}
+
 bool TaskManager::compareByPriority(const Task& a, const Task& b) {
 	return a.priority < b.priority;
 }

@@ -93,6 +93,48 @@ void SelectByOwnerCommand::executeImpl(const std::string& args)
 	taskManager.selectByOwner(args);
 }
 
+void GetTaskOwnerCommand::executeImpl(const std::string& args)
+{
+	try {
+		size_t pos;
+		int id = std::stoi(args, &pos);
+		if (pos != args.length()) {
+			std::cout << "参数格式错误。请使用: get_task_owner <ID>" << std::endl;
+			return;
+		}
+		taskManager.getTaskOwner(id);
+	}
+	catch (const std::invalid_argument& e) {
+		std::cout << "参数格式错误。请使用: get_task_owner <ID>" << std::endl;
+		return;
+	}
+	catch (const std::out_of_range& e) {
+		std::cout << "ID超出范围。请使用有效的任务ID。" << std::endl;
+		return;
+	}
+	catch (const std::exception& e) {
+		std::cout << "获取任务所有者时发生异常: " << e.what() << std::endl;
+		return;
+	}
+	catch (...) {
+		std::cout << "发生未知错误。" << std::endl;
+		return;
+	}
+}
+
+void ModifyTaskOwnerCommand::executeImpl(const std::string& args)
+{
+	size_t pos1 = args.find(',');
+	if (pos1 == std::string::npos) {
+		std::cout << "参数格式错误。请使用: modify_task_owner <ID>,<新所有者>" << std::endl;
+		return;
+	}
+	int id = std::stoi(args.substr(0, pos1));
+	std::string newOwner = args.substr(pos1 + 1);
+	taskManager.modifyTaskOwner(id, newOwner);
+
+}
+
 void HelpCommand::executeImpl(const std::string& args)
 {
 	size_t pos1 = args.find(' ');
@@ -112,8 +154,14 @@ void HelpCommand::executeImpl(const std::string& args)
 	else if (command == "upgrate_index") {
 		std::cout << "upgrate_index - 更新索引" << std::endl;
 	}
-	else if (command == "slowner") {
+	else if (command == "list_owner") {
 		std::cout << "slowner <所有者> - 根据所有者筛选任务" << std::endl;
+	}
+	else if (command == "get_owner") {
+		std::cout << "get_owner <ID> - 获取指定ID任务的所有者" << std::endl;
+	}
+	else if (command == "set_owner") {
+		std::cout << "set_owner <ID>,<新所有者> - 修改指定ID任务的所有者" << std::endl;
 	}
     else if (command == " ") {
         std::cout << "add <描述>,<所有者>,<优先级>,<截止日期> - 添加任务" << std::endl;
@@ -121,10 +169,12 @@ void HelpCommand::executeImpl(const std::string& args)
 		std::cout << "list [sortOption] - 列出所有任务，sortOption可选：0-按ID, 1-按优先级, 2-按截止日期" << std::endl;
 		std::cout << "update <ID>,<描述>,<所有者>,<优先级>,<截止日期> - 更新指定ID的任务" << std::endl;
 		std::cout << "upgrate_index - 更新索引" << std::endl;
-		std::cout << "slowner <所有者> - 根据所有者筛选任务" << std::endl;
+		std::cout << "list_owner <所有者> - 根据所有者筛选任务" << std::endl;
     }
 	else {
 		std::cout << "未知命令：" << command << std::endl;
 		std::cout << "可用命令: add, delete, list, update, upgrate_index, slowner" << std::endl;
 	}
 }
+
+
