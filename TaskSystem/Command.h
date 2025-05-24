@@ -65,3 +65,19 @@ public:
 private:
     TaskManager& taskManager;
 };
+
+class SelectByOwnerCommand : public Command<SelectByOwnerCommand> {
+public:
+    SelectByOwnerCommand(TaskManager& manager) : taskManager(manager) {}
+    void executeImpl(const std::string& args);
+private:
+    TaskManager& taskManager;
+};
+
+class HelpCommand : public Command<HelpCommand> {
+public:
+    HelpCommand(TaskManager& manager) : taskManager(manager) {}
+    void executeImpl(const std::string& args);
+private:
+    TaskManager& taskManager;
+};

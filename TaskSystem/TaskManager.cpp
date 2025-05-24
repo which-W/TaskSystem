@@ -4,13 +4,15 @@
 using json = nlohmann::json;
 TaskManager::TaskManager() :next_Id(1)
 {
-	loadTasks();
+	loadTasks(); // 创建任务表
 
 }
+
 TaskManager::~TaskManager() {
 	saveTasks();
 	Logger::GetInstance().log(LogLevel::INFO, "任务管理器已销毁，所有任务已保存。");
 }
+
 
 void TaskManager::loadTasks()
 {
@@ -39,6 +41,7 @@ void TaskManager::loadTasks()
 		Task task;
 		task.id = item.at("id").get<int>();       // 如果 key 不存在或类型不对，会抛异常
 		task.description = item.at("description").get<std::string>();
+		task.owner = item.at("owner").get<std::string>(); // 使用 value 方法提供默认值
 		task.priority = item.at("priority").get<int>();
 		task.dueDate = item.at("dueDate").get<std::string>();
 
@@ -51,11 +54,12 @@ void TaskManager::loadTasks()
 
 }
 
-void TaskManager::addTask(const std::string& description, int priority, const std::string& dueDate)
+void TaskManager::addTask(const std::string& description, std::string& owner ,int priority, const std::string& dueDate)
 {
 	Task task;
 	task.id = next_Id++;
 	task.description = description;
+	task.owner = owner; // 默认所有者，可以根据需要修改
 	task.priority = priority;
 	task.dueDate = dueDate;
 	tasks.push_back(task);
@@ -78,6 +82,7 @@ void TaskManager::saveTasks() const
 			json taskJson;
 			taskJson["id"] = task.id;
 			taskJson["description"] = task.description;
+			taskJson["owner"] = task.owner; 
 			taskJson["priority"] = task.priority;
 			taskJson["dueDate"] = task.dueDate;
 
@@ -122,11 +127,12 @@ void TaskManager::listTasks(int sortOption) const
 	}
 }
 
-void TaskManager::updateTask(int id, const std::string& description, int priority, const std::string& dueDate) {
+void TaskManager::updateTask(int id, const std::string& description , std::string& owner ,int priority, const std::string& dueDate) {
 	for (auto& task : tasks) {
 		if (task.id == id) {
 			Logger::GetInstance().log(LogLevel::INFO, "更新前任务: " + task.toString());
 			task.description = description;
+			task.owner = owner; // 可以根据需要修改所有者
 			task.priority = priority;
 			task.dueDate = dueDate;
 			Logger::GetInstance().log(LogLevel::INFO, "更新后任务: " + task.toString());
@@ -161,6 +167,26 @@ void TaskManager::upgrate_index() {
 		saveTasks();
 	}
 	return;
+}
+
+void TaskManager::selectByOwner(const std::string& owner) const
+{
+	std::vector<Task> filteredTasks;
+	for (const auto& task : tasks) {
+		if (task.owner == owner) {
+			filteredTasks.push_back(task);
+		}
+	}
+
+	if (filteredTasks.empty()) {
+		std::cout << "没有找到所有者为 " << owner << " 的任务。" << std::endl;
+		return;
+	}
+
+	for (const auto& task : filteredTasks) {
+		std::cout << task.toString() << std::endl;
+	}
+
 }
 
 bool TaskManager::compareByPriority(const Task& a, const Task& b) {

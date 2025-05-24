@@ -7,13 +7,14 @@ class TaskManager
 {
 public:
     TaskManager();
-    void addTask(const std::string& description, int priority, const std::string& dueDate);
+    void addTask(const std::string& description, std::string& owner,int priority, const std::string& dueDate);
     void deleteTask(int id);
-    void updateTask(int id, const std::string& description, int priority, const std::string& dueDate);
+    void updateTask(int id, const std::string& description, std::string& owner,  int priority, const std::string& dueDate);
     void listTasks(int sortOption = 0) const; // 0-按ID, 1-按优先级, 2-按截止日期
     void loadTasks();
     void saveTasks() const;
     void upgrate_index();
+	void selectByOwner(const std::string& owner) const; // 根据所有者筛选任务
     ~TaskManager();
 
 private:
