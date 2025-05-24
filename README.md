@@ -128,8 +128,7 @@ Task added successfully!
 
 ```bash
 > list
-[1] Complete project documentation (Priority: 2, Due: 2025-05-30)
-[2] Buy milk (Priority: 1, Due: 2025-05-24)
+ID: 1, Description: task2, Priority: 2, Due Date: 2025-1-1
 ```
 
 ### `update` - Update Task
@@ -144,12 +143,12 @@ Task added successfully!
 
 ### `upgrate_index` - Update Task Index
 
-**Syntax:** `upgrate_index <old_index>,<new_index>`
+**Syntax:** `upgrate_index`
 
 **Example:**
 
 ```bash
-> upgrate_index 1,2
+> upgrate_index 
 ```
 
 ### `exit` - Exit Application
