@@ -96,7 +96,8 @@ After launching TaskSystem, you'll see an interactive prompt where you can enter
 "list [sortOption] - 列出所有任务，sortOption可选：0-按ID, 1-按优先级, 2-按截止日期" 
 "update <ID>,<描述>,<所有者>,<优先级>,<截止日期> - 更新指定ID的任务" 
 "upgrate_index - 更新索引"
-"slowner <所有者> - 根据所有者筛选任务"
+"list_owner <所有者> - 根据所有者筛选任务"
+.....
 
 > add Buy groceries,1,2025-05-24
 添加任务成功！
@@ -217,7 +218,8 @@ Owner of task 1: Alice Smith
 "list [sortOption] - 列出所有任务，sortOption可选：0-按ID, 1-按优先级, 2-按截止日期" 
 "update <ID>,<描述>,<所有者>,<优先级>,<截止日期> - 更新指定ID的任务" 
 "upgrate_index - 更新索引"
-"slowner <所有者> - 根据所有者筛选任务"
+"list_owner <所有者> - 根据所有者筛选任务"
+....
 >help add
 "add <描述>,<所有者>,<优先级>,<截止日期> - 添加任务" 
 ```
