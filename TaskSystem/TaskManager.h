@@ -14,7 +14,7 @@ public:
     void loadTasks();
     void saveTasks() const;
     void upgrate_index();
-
+    ~TaskManager();
 
 private:
     std::vector<Task> tasks;

@@ -7,6 +7,10 @@ TaskManager::TaskManager() :next_Id(1)
 	loadTasks();
 
 }
+TaskManager::~TaskManager() {
+	saveTasks();
+	Logger::GetInstance().log(LogLevel::INFO, "任务管理器已销毁，所有任务已保存。");
+}
 
 void TaskManager::loadTasks()
 {
@@ -93,6 +97,12 @@ void TaskManager::saveTasks() const
 void TaskManager::listTasks(int sortOption) const
 {
 	std::vector<Task> sortedTasks = tasks;
+
+	// 如果没有任务，直接返回
+	if (sortedTasks.empty()) {
+		std::cout << "没有任务可供显示。" << std::endl;
+		return;
+	}
 
 	// 根据排序选项进行排序
 	switch (sortOption) {
