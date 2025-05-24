@@ -242,7 +242,7 @@ We welcome contributions! Please follow these guidelines:
 2. **Create a feature branch**
 
    ```bash
-   git checkout -b feature/amazing-feature
+   git checkout -b TaskSystem/test
    ```
 
 3. **Make your changes**
@@ -252,13 +252,13 @@ We welcome contributions! Please follow these guidelines:
 5. **Commit your changes**
 
    ```bash
-   git commit -m "Add amazing feature"
+   git commit -m "how do you to modify"
    ```
 
 6. **Push to the branch**
 
    ```bash
-   git push origin feature/amazing-feature
+   git push origin TaskSystem/test
    ```
 
 7. **Open a Pull Request**
@@ -280,7 +280,7 @@ Please use the [GitHub Issues](https://github.com/yourusername/TaskSystem/issues
 
 ## 📧 Contact
 
-- **Author**: [WGT]
+- **Author**: WGT
 - **Email**: [wengzu728.love@gmail.com]
 - **Project Link**: [https://github.com/Which-W/TaskSystem](https://github.com/Which-W/TaskSystem)
 
