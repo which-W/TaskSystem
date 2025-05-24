@@ -12,7 +12,7 @@ if (POLICY CMP0141)
 endif()
 
 project ("TaskSystem")
-#添加头文件（根据实际的安装目录修改，linux上）
+#添加子文件目录
 add_subdirectory ("TaskSystem")
 
 
