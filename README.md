@@ -101,7 +101,7 @@ After launching TaskSystem,You need to log in or register the relevant username 
 请输入密码:12345678
 用户验证成功！
 .....
-
+```
 After login，you'll see an interactive prompt where you can enter commands to manage your tasks. Use the `help` command to display all available commands and their usage.
 
 ```
