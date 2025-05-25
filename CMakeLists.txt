@@ -13,7 +13,7 @@ endif()
 
 project ("TaskSystem" VERSION 1.0)
 #添加子文件目录
-add_subdirectory ("TaskSystem")
+add_subdirectory ("cli_TaskSystem")
 
 
 # TODO: 如有需要，请添加测试并安装目标。

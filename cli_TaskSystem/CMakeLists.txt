@@ -1,6 +1,11 @@
 ﻿
 # 添加可执行文件和源文件CMAKE_CURRENT_SOURCE_DIR表示CMakeLists.txt所在的目录
-file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp /data/*.cpp /static/*.h /plugins/*.cpp )
+file(GLOB SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/static/*.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/plugins/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+)
 #添加头文件（根据实际的安装目录修改，linux上）
 set(Json_Include ${CMAKE_CURRENT_SOURCE_DIR}/../includes)
 set(SQLite3MC_DIR "F:/CS_learn/CPP_learn/TaskSystem/sqlite3mc-2.1.1-sqlite-3.49.2-icu-win64")
@@ -14,7 +19,6 @@ target_include_directories(TaskSystem
 )
 target_link_libraries(TaskSystem 
     ${SQLite3MC_DIR}/dll/sqlite3mc_icu_x64.lib
-   
 )
 
 
