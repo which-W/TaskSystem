@@ -8,7 +8,7 @@ file(GLOB SOURCES
 )
 #添加头文件（根据实际的安装目录修改，linux上）
 set(Json_Include ${CMAKE_CURRENT_SOURCE_DIR}/../includes)
-set(SQLite3MC_DIR "F:/CS_learn/CPP_learn/TaskSystem/sqlite3mc-2.1.1-sqlite-3.49.2-icu-win64")
+set(SQLite3MC_DIR "F:/CS_learn/CPP_learn/TaskSystem/sqlite3mc")
 # 创建可执行文件
 add_executable(TaskSystem ${SOURCES})
 # 添加 nlohmann 头文件路径
