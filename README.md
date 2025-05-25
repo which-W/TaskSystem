@@ -397,6 +397,7 @@ Please use the [GitHub Issues](https://github.com/Which-W/TaskSystem/issues) pag
 - CMake community for build system support
 - C++ community for design pattern guidance
 - Contributors and users who provide feedback and improvements
+- SQLite3MC (Database management)[https://github.com/utelle/SQLite3MultipleCiphers] - Lightweight user information registration encrypted database
 
 ---
 
