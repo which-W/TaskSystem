@@ -285,31 +285,6 @@ Available presets:
 - `x86-debug` - 32-bit Debug build
 - `x86-release` - 32-bit Release build
 
-## 📁 Project Structure
-
-```
-TaskSystem/
-├── CMakeLists.txt          # Main CMake configuration
-├── CMakePresets.json       # CMake presets for different platforms
-├── LICENSE                 # Apache 2.0 License
-├── README.md              # This file
-├── .gitignore             # Git ignore rules
-├── includes/              # External dependencies headers
-│   └── nlohmann/          # JSON library headers
-└── TaskSystem/            # Source code directory
-    ├── CMakeLists.txt     # Source CMake configuration
-    ├── TaskSystem.cpp     # Main application entry point
-    ├── TaskSystem.h       # Main header file
-    ├── TaskManager.h      # Task management logic
-    ├── Command.h          # Command pattern implementation
-    ├── CommandWrapper.h   # Type erasure wrapper for commands
-    ├── Register_Command.h # Command registration system
-    ├── Run_command.h      # Command execution engine
-    ├── Logger.h           # Logging system
-    ├── LogQueue.h         # Thread-safe log queue
-    └── global.h           # Global includes and definitions
-```
-
 ## 🏛️ Architecture
 
 ### Design Patterns Used
