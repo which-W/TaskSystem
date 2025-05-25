@@ -10,7 +10,6 @@ int main()
 {	
 	TaskManager taskManager;
 	initCommandMap(taskManager);
-	// 加载任务数据
 	std::unordered_map<std::string, CommandWrapper>& commandMap = getCommandMap();
 	runloop(commandMap);
 	return 0;

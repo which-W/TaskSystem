@@ -2,10 +2,11 @@
 #include <iostream>
 #include "DatabaseManager.h"
 
-DatabaseManager dbManager("user_pwd.db","123456");
+DatabaseManager dbManager("user_pwd.db", "12345678wW");
 
 void runloop(std::unordered_map<std::string, CommandWrapper>& commandMap) {
-	runVerificationLoop(commandMap); // 进入验证循环
+    
+    runVerificationLoop(commandMap); // 进入验证循环
 }
 
 void runVerificationLoop(std::unordered_map<std::string, CommandWrapper>& commandMap)

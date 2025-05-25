@@ -39,9 +39,9 @@ void TaskManager::loadTasks()
 	// 遍历 JSON 数组中的每个任务对象
 	for (const auto& item : jsonDataParsed) {
 		Task task;
-		task.id = item.at("id").get<int>();       // 如果 key 不存在或类型不对，会抛异常
+		task.id = item.at("id").get<int>();       
 		task.description = item.at("description").get<std::string>();
-		task.owner = item.at("owner").get<std::string>(); // 使用 value 方法提供默认值
+		task.owner = item.at("owner").get<std::string>(); 
 		task.priority = item.at("priority").get<int>();
 		task.dueDate = item.at("dueDate").get<std::string>();
 

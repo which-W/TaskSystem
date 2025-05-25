@@ -67,7 +67,7 @@ void UpdateCommand::executeImpl(const std::string& args) {
     size_t pos3 = args.find(',', pos2 + 1);
 	size_t pos4 = args.find(',', pos3 + 1);
     if (pos1 == std::string::npos || pos2 == std::string::npos || pos3 == std::string::npos || pos4 == std::string::npos) {
-        std::cout << "参数格式错误。请使用: update <ID>,<描述>,<优先级>,<截止日期>" << std::endl;
+        std::cout << "参数格式错误。请使用: update <ID>,<描述>,<所有者>,<优先级>,<截止日期>" << std::endl;
         return;
     }
     int id = std::stoi(args.substr(0, pos1));
