@@ -8,11 +8,11 @@
 #include "Register_Command.h"
 #include "Run_command.h"
 int main()
-{
+{	
 	TaskManager taskManager;
 	initCommandMap(taskManager);
 	// 加载任务数据
 	std::unordered_map<std::string, CommandWrapper>& commandMap = getCommandMap();
-	runCommandLoop(commandMap);
+	runloop(commandMap);
 	return 0;
 }

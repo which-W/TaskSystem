@@ -3,13 +3,18 @@
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 #添加头文件（根据实际的安装目录修改，linux上）
 set(Json_Include ${CMAKE_CURRENT_SOURCE_DIR}/../includes)
+set(SQLite3MC_DIR "F:/CS_learn/CPP_learn/TaskSystem/sqlite3mc-2.1.1-sqlite-3.49.2-icu-win64")
 # 创建可执行文件
-add_executable(TaskSystem ${SOURCES} "CommandWrapper.h" "Register_Command.h" "Run_command.h")
+add_executable(TaskSystem ${SOURCES} "CommandWrapper.h" "Register_Command.h" "Run_command.h" "DatabaseManager.h")
 # 添加 nlohmann 头文件路径
 target_include_directories(TaskSystem
     PUBLIC
     ${Json_Include}
-    
+    ${SQLite3MC_DIR}/include
+)
+target_link_libraries(TaskSystem 
+    ${SQLite3MC_DIR}/dll/sqlite3mc_icu_x64.lib
+   
 )
 
 

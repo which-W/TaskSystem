@@ -155,7 +155,7 @@ void HelpCommand::executeImpl(const std::string& args)
 		std::cout << "upgrate_index - 更新索引" << std::endl;
 	}
 	else if (command == "list_owner") {
-		std::cout << "slowner <所有者> - 根据所有者筛选任务" << std::endl;
+		std::cout << "list_owner <所有者> - 根据所有者筛选任务" << std::endl;
 	}
 	else if (command == "get_owner") {
 		std::cout << "get_owner <ID> - 获取指定ID任务的所有者" << std::endl;
@@ -163,13 +163,15 @@ void HelpCommand::executeImpl(const std::string& args)
 	else if (command == "set_owner") {
 		std::cout << "set_owner <ID>,<新所有者> - 修改指定ID任务的所有者" << std::endl;
 	}
-    else if (command == " ") {
+    else if (command == "") {
         std::cout << "add <描述>,<所有者>,<优先级>,<截止日期> - 添加任务" << std::endl;
 		std::cout << "delete <ID> - 删除指定ID的任务" << std::endl;
 		std::cout << "list [sortOption] - 列出所有任务，sortOption可选：0-按ID, 1-按优先级, 2-按截止日期" << std::endl;
 		std::cout << "update <ID>,<描述>,<所有者>,<优先级>,<截止日期> - 更新指定ID的任务" << std::endl;
 		std::cout << "upgrate_index - 更新索引" << std::endl;
 		std::cout << "list_owner <所有者> - 根据所有者筛选任务" << std::endl;
+		std::cout << "get_owner <ID> - 获取指定ID任务的所有者" << std::endl;
+		std::cout << "set_owner <ID>,<新所有者> - 修改指定ID任务的所有者" << std::endl;
     }
 	else {
 		std::cout << "未知命令：" << command << std::endl;
