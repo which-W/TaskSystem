@@ -35,7 +35,8 @@ A lightweight, efficient task management system built with modern C++ featuring 
 - C++17 compatible compiler (GCC 7+, Clang 5+, MSVC 2017+)
 - CMake 3.12 or higher
 - nlohmann/json library
-
+- SQLite3MC (Database management)[https://github.com/utelle/SQLite3MultipleCiphers]
+  
 ### Quick Start
 
 1. **Clone the repository**
@@ -47,7 +48,8 @@ A lightweight, efficient task management system built with modern C++ featuring 
 
 2. **Install dependencies**
 
-   Make sure nlohmann/json is available in your system. You can install it via:
+   Basecase the project includes nlohmann . You shouldn't install it via.
+   But you aslo can modify CMakelist.txt to meet your need
 
    **Ubuntu/Debian:**
 
@@ -66,8 +68,15 @@ A lightweight, efficient task management system built with modern C++ featuring 
    ```bash
    vcpkg install nlohmann-json
    ```
+3. **Configure SQLite3MC path** (Windows or linux)
 
-3. **Build the project**
+   Edit `TaskSystem/CMakeLists.txt` and update the SQLite3MC_DIR path:
+   
+   ```cmake
+   set(SQLite3MC_DIR "your_path_to_sqlite3mc")
+   ```
+(windows)you should make sure that you have add "bin" and "dll" to *.exe
+4. **Build the project**
 
    ```bash
    mkdir build && cd build
@@ -75,7 +84,7 @@ A lightweight, efficient task management system built with modern C++ featuring 
    cmake --build .
    ```
 
-4. **Run the application**
+5. **Run the application**
 
    ```bash
    ./TaskSystem        # Linux/macOS
@@ -84,7 +93,16 @@ A lightweight, efficient task management system built with modern C++ featuring 
 
 ## 📖 Usage
 
-After launching TaskSystem, you'll see an interactive prompt where you can enter commands to manage your tasks. Use the `help` command to display all available commands and their usage.
+After launching TaskSystem,You need to log in or register the relevant username and password. After successful login, the task management system will be displayed
+```
+欢迎来到任务管理系统的login页面,如果想退出然可以输入q或exit退出程序。
+是否注册新用户？如果是则y,如果已有账号则按n(y/n):
+请输入用户名:wgt
+请输入密码:12345678
+用户验证成功！
+.....
+
+After login，you'll see an interactive prompt where you can enter commands to manage your tasks. Use the `help` command to display all available commands and their usage.
 
 ```
 欢迎使用任务管理系统！
