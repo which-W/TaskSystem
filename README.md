@@ -75,7 +75,7 @@ A lightweight, efficient task management system built with modern C++ featuring 
    ```cmake
    set(SQLite3MC_DIR "your_path_to_sqlite3mc")
    ```
-(windows)you should make sure that you have add "bin" and "dll" to *.exe
+(windows) you should make sure that you have add "bin/*dll" and "*.dll" to *.exe
 4. **Build the project**
 
    ```bash
